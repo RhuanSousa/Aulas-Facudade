@@ -39,7 +39,6 @@ int main() {
 
             printf("\nNOME COMPLETO: ");
             fgets(nome[cont], max_caractere, stdin);
-            nome[cont][strcspn(nome[cont], "\n")] = '\0';
 
             printf("ENDERECO COMPLETO: ");
             fgets(endereco[cont], max_caractere, stdin);
@@ -59,7 +58,6 @@ int main() {
             
             printf("\nDigite o nome da pessoa que dejesa consultar: ");
             fgets(consulta, max_caractere, stdin);
-            consulta[strcspn(consulta, "\n")] = '\0';
 
             for (i = 0; i < cont; i++)
             {
