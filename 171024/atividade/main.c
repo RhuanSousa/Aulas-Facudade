@@ -10,60 +10,63 @@ int main() {
 
     char nome[max_cadastro][max_caractere];
     char endereco[max_cadastro][max_caractere];
-    char consulta[max_caractere];
+    char nome_cons[max_caractere];
     int matricula[max_cadastro];
     int idade[max_cadastro];
-    int opcao, status = 1, cont = 0, i, encontrar;
+    int opcao, status = 1, pos = 0, i, consulta;
 
     system("cls");
+    printf("\n-------------------------------------");
+    printf("\n           CADASTRO ALUNOS           ");
+    printf("\n-------------------------------------");
+
     while (status)
     {
         printf("\n1 - Realizar cadastro");
-        printf("\n2 - Consultar pessoa");
+        printf("\n2 - Consultar aluno");
         printf("\n3 - Sair");
         printf("\nEscolha sua opcao: ");
         scanf("%d", &opcao);
         fflush(stdin);
-        
 
         switch (opcao)
         {
         case 1:
 
-            if (cont >= max_cadastro) {
+            if (pos >= max_cadastro) {
                 printf("Limite de cadastros atingido!\n");
                 break;
             }
 
-            printf("\nMATRICULA:  %d", cont);
+            printf("\nMATRICULA:  %d", pos);
 
             printf("\nNOME COMPLETO: ");
-            fgets(nome[cont], max_caractere, stdin);
+            fgets(nome[pos], max_caractere, stdin);
 
             printf("ENDERECO COMPLETO: ");
-            fgets(endereco[cont], max_caractere, stdin);
-            fflush(stdin);
+            fgets(endereco[pos], max_caractere, stdin);
 
             printf("IDADE: ");
-            scanf("%d", &idade[cont]);
-            fflush(stdin);
-
+            scanf("%d", &idade[pos]);
+            
             printf("\nCADASTRO CONCLUIDO!");
-            printf("\n-------------------------------------\n");
-           
-            matricula[cont] = cont;
-            cont++;
+
+            matricula[pos] = pos;
+            pos++;
+            Sleep(2500);
+            system("cls");
             break;
         case 2:
             
-            printf("\nDigite o nome da pessoa que dejesa consultar: ");
-            fgets(consulta, max_caractere, stdin);
+            printf("\nDigite o nome do(a) aluno(a) que dejesa consultar: ");
+            fgets(nome_cons, max_caractere, stdin);
 
-            for (i = 0; i < cont; i++)
+            for (i = 0; i < pos; i++)
             {
-                encontrar = strcmp(consulta, nome[i]);
+                consulta = strcmp(nome_cons, nome[i]);
 
-                if (encontrar == 0) {
+                if (consulta == 0) {
+                    printf("\nALUNO ENCONTRADO!!\n");
                     printf("\nMATRICULA: %d\n", matricula[i]);
                     printf("ENDERECO: %s", endereco[i]);
                     printf("IDADE: %d\n", idade[i]);
@@ -71,10 +74,12 @@ int main() {
                 }  
             } 
             
-            if(encontrar != 0) {
+            if(consulta != 0) {
                 printf("\nPessoa nao cadastrada.\n");
             }
             
+            Sleep(2000);
+            system("cls");
             break;
         case 3:
             status = 0;
@@ -89,5 +94,7 @@ int main() {
         }
     }
 
+    Sleep(1200);
+    system("cls");
     return 0;
 }
