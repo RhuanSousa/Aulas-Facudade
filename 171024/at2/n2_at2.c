@@ -89,6 +89,6 @@ int main() {
         }
     } while (opcao != 3);
     
-    
+    system("pause");
     return 0;
 }
