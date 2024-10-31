@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-float menu_float(void){
+int menu_int(void){
 
-    float res;
+    int res;
     printf("\nInsira um numero: ");
-    scanf("%f", &res);
+    scanf("%d", &res);
 
     return res;   
 }
@@ -31,22 +31,43 @@ char menu_principal(void)
     }
 }
 
-float soma(float parcela1, float parcela2) {
+int soma(int parcela1, int parcela2) {
 
-    float resultado = parcela1 + parcela2;
+    int resultado = parcela1 + parcela2;
+
+    return resultado;
+}
+
+int sub(int parcela1, int parcela2) {
+
+    int resultado = parcela1 - parcela2;
+
+    return resultado;
+}
+
+int mult(int parcela1, int parcela2) {
+
+    int resultado = parcela1 * parcela2;
+
+    return resultado;
+}
+
+int div(int parcela1, int parcela2) {
+
+    int resultado = parcela1 / parcela2;
 
     return resultado;
 }
 
 int main() {
     char opcao;
-    float res;
-    float num1, num2;
+    int res;
+    int num1, num2;
 
     opcao = menu_principal();
 
-    num1 = menu_float();
-    num2 = menu_float();
+    num1 = menu_int();
+    num2 = menu_int();
 
 
     printf("\nEscolha = %c", opcao);
@@ -57,16 +78,20 @@ int main() {
         res = soma(num1, num2);
         break;
     case '-':
+        res = sub(num1, num2);
         break;
     case '*':
+        res = mult(num1, num2);
         break;
     case '/':
+        res = div(num1, num2);
         break;
     default:
+        printf("Numero invalido!");
         break;
     }
 
-    printf("\n %.1f %c %.1f = %.1f", num1, opcao, num2, res);
+    printf("\n%d %c %d = %d", num1, opcao, num2, res);
 
     return 0;
 }
