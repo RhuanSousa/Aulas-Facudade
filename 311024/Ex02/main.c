@@ -2,7 +2,6 @@
 
 void maior_menor(int *v, int *maior, int *menor) {
     int i;
-    int maior = 0, menor = 0;
 
     *maior = v[0];
     *menor = v[0];
@@ -28,10 +27,10 @@ int main(void) {
     int vetor[5] = {12, 56, 23, 7, 49};
     int ma, me;
 
-    maior_menor(vetor[], &ma, &me);
+    maior_menor(vetor, &ma, &me);
 
-    printf("Maior valor: %d", ma);
-    printf("Menor valor: %d", me);
+    printf("\nMaior valor: %d", ma);
+    printf("\nMenor valor: %d", me);
 
     return 0;
 }
