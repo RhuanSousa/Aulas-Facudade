@@ -22,11 +22,19 @@ void maior_menor(int *v, int *maior, int *menor) {
 
 }
 
+#define max (5)
+
 int main(void) {
     
-    int vetor[5] = {12, 56, 23, 7, 49};
-    int ma, me;
+    int vetor[max];
+    int ma, me, i;
 
+    for (i = 0; i < max; i++)
+    {
+        printf("Digite o %d valor: ", i+1);
+        scanf("%d", &vetor[i]);
+    }
+    
     maior_menor(vetor, &ma, &me);
 
     printf("\nMaior valor: %d", ma);
