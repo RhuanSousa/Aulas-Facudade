@@ -1,21 +1,63 @@
 #include <stdio.h>
 
-int main(void) {
+struct notebook_t
+{
+    char *marca;
+    char *modelo;
+    int quantidade;
+    float preco;
+    int ramgb;
+    int hdgb;
+    int tela;
+    char *video;
+};
 
-    char * marca[1000];
-    char * modelo[1000];
-    int quantidade[1000];
-    float preco[1000];
+int main(void)
+{
 
-    marca [0] = "Dell";
-    modelo [0] = "XPS15";
-    quantidade [0] = 1000;
-    preco [0] = 8000.0;
+    struct notebook_t note[1000];
 
-    printf("\n Marca: %s", marca[0]);
-    printf("\n Modelo: %s", modelo[0]);
-    printf("\n Quantidade: %d", quantidade[0]);
-    printf("\n Preco: %.2f", preco[0]);
+    printf("Cadastre as informacoes do notebook");
+
+    for (int i = 0; i < 1000; i++)
+    {
+        printf("\n\tMarca: ");
+        scanf("%s", &note[i].marca);
+
+        printf("\n\tModelo: ");
+        scanf("%s", &note[i].modelo);
+
+        printf("\n\tRAM (GB): ");
+        scanf("%d", &note[i].ramgb);
+
+        printf("\n\tHD (GB): ");
+        scanf("%d", &note[i].hdgb);
+
+        printf("\n\tTELA (pol): ");
+        scanf("%d", &note[i].tela);
+
+        printf("\n\tPlaca de video: ");
+        scanf("%s", &note[i].video);
+
+        printf("\n\tQuantidade: ");
+        scanf("%d", &note[i].quantidade);
+
+        printf("\n\tCusto: ");
+        scanf("%.2f", &note[i].preco);
+    }
+
+    for (int i = 0; i < 1000; i++)
+    {
+        printf("Especificações do notebook: %d", i + 1);
+
+        printf("\n Marca: %s", note[i].marca);
+        printf("\n Modelo: %s", note[i].modelo);
+        printf("\n QTD RAM: %d", note[i].ramgb);
+        printf("\n QTD HD: %d", note[i].hdgb);
+        printf("\n PLACA DE VIDEO: %s", note[i].video);
+        printf("\n Quantidade: %d", note[i].quantidade);
+        printf("\n Preco: %.2f", note[i].preco);
+    }
 
     return 0;
 }
