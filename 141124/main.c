@@ -1,9 +1,17 @@
 #include <stdio.h>
 
+enum marcas_t{
+    DELL = 0,
+    SAMSUNG = 1,
+    ASUS = 2,
+};
+
+typedef struct notebook_t notebook_t;
+
 struct notebook_t
 {
-    char *marca;
-    char *modelo;
+    enum marcas_t marca;
+    char modelo[50];
     int quantidade;
     float preco;
     int ramgb;
@@ -12,52 +20,57 @@ struct notebook_t
     char *video;
 };
 
-int main(void)
-{
-
-    struct notebook_t note[1000];
+void cadastro_notebook(notebook_t * prod){
 
     printf("Cadastre as informacoes do notebook");
 
-    for (int i = 0; i < 1000; i++)
-    {
         printf("\n\tMarca: ");
-        scanf("%s", &note[i].marca);
+        scanf("%d", &prod->marca);
 
         printf("\n\tModelo: ");
-        scanf("%s", &note[i].modelo);
+        scanf("%s", &prod->modelo);
 
         printf("\n\tRAM (GB): ");
-        scanf("%d", &note[i].ramgb);
+        scanf("%d", &prod->ramgb);
 
         printf("\n\tHD (GB): ");
-        scanf("%d", &note[i].hdgb);
+        scanf("%d", &prod->hdgb);
 
         printf("\n\tTELA (pol): ");
-        scanf("%d", &note[i].tela);
+        scanf("%d", &prod->tela);
 
         printf("\n\tPlaca de video: ");
-        scanf("%s", &note[i].video);
+        scanf("%s", &prod->video);
 
         printf("\n\tQuantidade: ");
-        scanf("%d", &note[i].quantidade);
+        scanf("%d", &prod->quantidade);
 
         printf("\n\tCusto: ");
-        scanf("%.2f", &note[i].preco);
-    }
+        scanf("%.2f", &prod->preco);
+}
 
-    for (int i = 0; i < 1000; i++)
-    {
-        printf("Especificações do notebook: %d", i + 1);
+void exibir_nb(notebook_t * prod){
 
-        printf("\n Marca: %s", note[i].marca);
-        printf("\n Modelo: %s", note[i].modelo);
-        printf("\n QTD RAM: %d", note[i].ramgb);
-        printf("\n QTD HD: %d", note[i].hdgb);
-        printf("\n PLACA DE VIDEO: %s", note[i].video);
-        printf("\n Quantidade: %d", note[i].quantidade);
-        printf("\n Preco: %.2f", note[i].preco);
-    }
+    printf("\n Marca: %d", prod->marca);
+    printf("\n Modelo: %s", prod->modelo);
+    printf("\n QTD RAM: %d", prod->ramgb);
+    printf("\n QTD HD: %d", prod->hdgb);
+    printf("\n PLACA DE VIDEO: %s", prod->video);
+    printf("\n Quantidade: %d", prod->quantidade);
+    printf("\n Preco: %.2f", prod->preco);
 
+}
+
+
+int main(void)
+{
+   notebook_t note[1000];
+   int i;
+
+   for (i = 0; i < 1000; i++)
+   {
+        cadastro_notebook(&note[i]);
+        exibir_nb(&note[i]);
+   }
     return 0;
 }
